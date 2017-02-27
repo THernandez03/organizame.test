@@ -1,0 +1,114 @@
+<div>
+  <div>
+    <label for="selected">Item Seleccionado:</label>
+    <span name="selected" ng-value="vm.selectedId">{{vm.selectedId}}</span>
+    <i class="glyphicon glyphicon-remove" ng-if="vm.selectedId" ng-click="vm.unselectItem()"></i>
+  </div>
+  <hr/>
+  <form id="form" name="form" role="form">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" name="nombre" class="form-control" ng-model="vm.licencia.nombre" ng-value="vm.licencia.nombre" required />
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripcion</label>
+      <textarea name="descripcion" class="form-control" ng-model="vm.licencia.descripcion" ng-value="vm.licencia.descripcion" required />
+    </div>
+    <div class="form-group">
+      <label for="tipo">Tipo</label>
+      <input type="number" name="tipo" class="form-control" ng-model="vm.licencia.tipo" ng-value="vm.licencia.tipo" required />
+    </div>
+    <div class="form-group">
+      <label for="precio">Precio</label>
+      <input type="number" name="precio" class="form-control" ng-model="vm.licencia.precio" ng-value="vm.licencia.precio" required />
+    </div>
+    <div class="form-group">
+      <label for="numeroUsuarios">Numero de Usuarios</label>
+      <input type="number" name="numeroUsuarios" class="form-control" ng-model="vm.licencia.numeroUsuarios" ng-value="vm.licencia.numeroUsuarios" required />
+    </div>
+    <div class="form-group">
+      <label for="numeroRegistros">Numero de Registros</label>
+      <input type="number" name="numeroRegistros" class="form-control" ng-model="vm.licencia.numeroRegistros" ng-value="vm.licencia.numeroRegistros" required />
+    </div>
+    <div class="form-group">
+      <label for="duracion">Duración</label>
+      <input type="number" name="duracion" class="form-control" ng-model="vm.licencia.duracion" ng-value="vm.licencia.duracion" required />
+    </div>
+    <div class="form-group">
+      <label for="publicado">Publicado</label>
+      <input type="checkbox" name="publicado" class="form-control" modelg-value="vm.licencia.publicado" ng-value="vm.licencia.publicado"/>
+    </div>
+    <div class="form-group">
+      <label for="imagen">Imagen</label>
+      <input type="text" name="imagen" class="form-control" ng-model="vm.licencia.imagen" ng-value="vm.licencia.imagen" required />
+    </div>
+    <div class="form-group">
+      <label for="precioMes">Precio Mes</label>
+      <input type="number" name="precioMes" class="form-control" ng-model="vm.licencia.precioMes" ng-value="vm.licencia.precioMes" required />
+    </div>
+    <div class="form-group">
+      <label for="numeroRegistroMes">Número de Registro del Mes</label>
+      <input type="number" name="numeroRegistroMes" class="form-control" ng-model="vm.licencia.numeroRegistroMes" ng-value="vm.licencia.numeroRegistroMes" required />
+    </div>
+    <div class="form-group">
+      <label for="llamadaAccion">LLamada a la accion</label>
+      <textarea name="llamadaAccion" class="form-control" ng-model="vm.licencia.llamadaAccion" ng-value="vm.licencia.llamadaAccion" required />
+    </div>
+    <div class="form-group">
+      <label for="descripcionAdicional">Descripción Adicional</label>
+      <textarea name="descripcionAdicional" class="form-control" ng-model="vm.licencia.descripcionAdicional" ng-value="vm.licencia.descripcionAdicional" required />
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" ng-if="!vm.selectedId" ng-click="vm.addItem()">Add Item</button>
+      <button class="btn btn-primary" ng-if="vm.selectedId" ng-click="vm.updateItem(vm.selectedId)">Update Item</button>
+      <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+  </form>
+  <hr/>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Tipo</th>
+        <th>Precio</th>
+        <th>Numero de Usuarios</th>
+        <th>Numero de Registros</th>
+        <th>Duración</th>
+        <th>Publicado</th>
+        <th>Imagen</th>
+        <th>Precio Mes</th>
+        <th>Número de Registro del Mes</th>
+        <th>Llamada a la Acción</th>
+        <th>Descripción Adicional</th>
+        <th>Activo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbdoy>
+      <tr ng-repeat="licencia in vm.licencias">
+        <td><input type="radio" name="selected" ng-checked="{{licencia.id === vm.selectedId}}" ng-click="vm.selectItem(licencia.id)"/></td>
+        <td>{{licencia.id}}</td>
+        <td>{{licencia.nombre}}</td>
+        <td>{{licencia.descripcion}}</td>
+        <td>{{licencia.tipo}}</td>
+        <td>{{licencia.precio}}</td>
+        <td>{{licencia.numeroUsuarios}}</td>
+        <td>{{licencia.numeroRegistros}}</td>
+        <td>{{licencia.duracion}}</td>
+        <td>{{licencia.publicado}}</td>
+        <td>{{licencia.imagen}}</td>
+        <td>{{licencia.precioMes}}</td>
+        <td>{{licencia.numeroRegistroMes}}</td>
+        <td>{{licencia.llamadaAccion}}</td>
+        <td>{{licencia.descripcionAdicional}}</td>
+        <td>{{licencia.activo}}</td>
+        <td>
+          <i class="glyphicon glyphicon-remove" ng-click="vm.deleteItem(licencia.id)"></i>
+        </td>
+      </tr>
+    </tbdoy>
+  </table>
+</div>

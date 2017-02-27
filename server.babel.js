@@ -16,7 +16,7 @@ mysql.createConnection({
   app.engine('html', hogan);
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(express.static('./assets', { maxAge: 31557600000 }));
+  app.use(express.static('./client', { maxAge: 31557600000 }));
 
   app.post('/login', async (req, res) => {
     const { user, pass } = req.body;
@@ -28,7 +28,7 @@ mysql.createConnection({
     `;
     try{
       const data = await connection.query(query);
-      res.json(data);
+      res.json(data[0]);
     }catch(error){
       res.json(error);
     }
@@ -38,12 +38,17 @@ mysql.createConnection({
     const data = await connection.query(query);
     res.json(data);
   });
-  app.get('/licencias', async (req, res) => {
+  app.get('/licenses', async (req, res) => {
     const query = 'SELECT * from licencias';
     const data = await connection.query(query);
     res.json(data);
   });
-  app.post('/licencias', async (req, res) => {
+  app.get('/licenses/:id', async (req, res) => {
+    const query = `SELECT * from licencias WHERE id="${req.params.id}"`;
+    const data = await connection.query(query);
+    res.json(data[0]);
+  });
+  app.post('/licenses', async (req, res) => {
     const whitelistHeaders = [
       'nombre',
       'descripcion',
@@ -77,7 +82,7 @@ mysql.createConnection({
       res.json(error);
     }
   });
-  app.put('/licencias/:id', async (req, res) => {
+  app.put('/licenses/:id', async (req, res) => {
     const whitelistHeaders = [
       'nombre',
       'descripcion',
@@ -109,7 +114,7 @@ mysql.createConnection({
       res.json(error);
     }
   });
-  app.delete('/licencias/:id', async (req, res) => {
+  app.delete('/licenses/:id', async (req, res) => {
     const query = `
       DELETE FROM licencias
       WHERE id="${req.params.id}"
